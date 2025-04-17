@@ -39,7 +39,3 @@ out/
 # Google Cloud key 제외
 src/main/resources/google-cloud-key.json
 
-src/main/resources/google-cloud-key.json
-src/main/resources/google-cloud-key.json
-build/
-src/main/resources/google-cloud-key.json
