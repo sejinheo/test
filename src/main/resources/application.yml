@@ -1,8 +1,14 @@
+#spring:
+  #datasource:
+    #url: jdbc:mysql://localhost:3306/Naebom?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    #username: root
+    #password: 3003q300!
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/Naebom?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
-    username: root
-    password: 3003q300!
+    url: jdbc:mysql://naebom-mysql-57x.qoddiapp.com:3306/naebom-database?useSSL=false&serverTimezone=UTC
+    username: naebom-user
+    password: Jp4zN1CocsPO
+
   servlet:
     multipart:
       enabled: true
@@ -15,10 +21,16 @@ spring:
 
   data:
     redis:
-      host: localhost
+      host: srv-captain--kygwnixjat # 내부 통신용 이름
       port: 6379
+      password: ${REDIS_PASSWORD}   # Qoddi 환경변수 참조
       timeout: 60000ms
       database: 0
+    #redis:
+      #host: localhost
+      #port: 6379
+      #timeout: 60000ms
+      #database: 0
 
   mail:
     host: smtp.gmail.com
@@ -52,4 +64,5 @@ google:
   maps:
     api-key: AIzaSyAuQNhpD_ilIrQ6nUv9GS7VzaPd9ZbtTEo
   cloud:
-    credentials: "/Users/heosejin222gmail.com/Desktop/내봄/naebom 2/src/main/resources/google-cloud-key.json"
+    #credentials: "/Users/heosejin222gmail.com/Desktop/내봄/naebom 2/src/main/resources/google-cloud-key.json"
+    credentials: classpath:google-cloud-key.json
