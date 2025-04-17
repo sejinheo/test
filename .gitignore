@@ -1,10 +1,7 @@
 HELP.md
 .gradle
-### Build Output ###
-# 전체 build 폴더 무시하되, 실행 JAR 파일은 포함
-/build/*
-!/build/libs/
-!/build/libs/naebom-0.0.1-SNAPSHOT.jar
+
+/build/
 
 ### STS ###
 .apt_generated
