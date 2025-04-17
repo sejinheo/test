@@ -37,7 +37,7 @@ jwt:
   secret: "secret_key_secret_key_secret_key"
 
 server:
-  port: 8080
+  port: 3000
 
 logging:
   level:
