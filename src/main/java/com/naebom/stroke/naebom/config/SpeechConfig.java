@@ -1,3 +1,4 @@
+/*
 package com.naebom.stroke.naebom.config;
 
 import com.google.auth.oauth2.GoogleCredentials;
@@ -25,3 +26,32 @@ public class SpeechConfig {
         return GoogleCredentials.fromStream(new FileInputStream(credentialsFile));
     }
 }
+*/
+package com.naebom.stroke.naebom.config;
+
+import com.google.auth.oauth2.GoogleCredentials;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+
+@Configuration
+public class SpeechConfig {
+
+    @Bean
+    public GoogleCredentials googleCredentials() throws IOException {
+        String json = System.getenv("GOOGLE_APPLICATION_CREDENTIALS_JSON");
+
+        if (json == null || json.isEmpty()) {
+            throw new IOException("환경변수 GOOGLE_APPLICATION_CREDENTIALS_JSON이 비어있습니다.");
+        }
+
+        InputStream inputStream = new ByteArrayInputStream(json.getBytes(StandardCharsets.UTF_8));
+        System.out.println("✅ Google Cloud 인증 키 로드 성공 from 환경변수");
+        return GoogleCredentials.fromStream(inputStream);
+    }
+}
+
