@@ -56,5 +56,5 @@ google:
   maps:
     api-key: AIzaSyAuQNhpD_ilIrQ6nUv9GS7VzaPd9ZbtTEo
   cloud:
-    credentials: ${GOOGLE_APPLICATION_CREDENTIALS}
+    credentials: ${GOOGLE_APPLICATION_CREDENTIALS_JSON}
 
