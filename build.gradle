@@ -35,6 +35,10 @@ dependencies {
 	implementation 'org.apache.commons:commons-text:1.10.0' // Levenshtein 거리 계산용
 	implementation 'commons-io:commons-io:2.11.0' // 파일 저장 용도
 
+	implementation 'org.mariadb.jdbc:mariadb-java-client:3.1.4'
+
+
+
 	// Google Cloud BOM 적용
 	implementation platform('com.google.cloud:libraries-bom:26.21.0')
 
