@@ -20,9 +20,12 @@ spring:
 
   data:
     redis:
-      url: rediss://default:${REDIS_PASSWORD}@sharp-vervet-11892.upstash.io:6379
-      timeout: 60000ms
-      database: 0
+      host: sharp-vervet-11892.upstash.io
+      port: 6379
+      username: default
+      password: ${REDIS_PASSWORD}
+      ssl:
+        enabled: true
 
   mail:
     host: smtp.gmail.com
