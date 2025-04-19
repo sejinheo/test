@@ -9,7 +9,7 @@ spring:
     #url: jdbc:mysql://srv-captain--soavirwlkf-mysql-57x:3306/naebom-database?useSSL=false&serverTimezone=UTC
     #username: naebom-user
     #password: Jp4zN1CocsPO
-    url: jdbc:mariadb://mariadb-prod.cloudtype.app:3306/naebom
+    url: jdbc:mariadb://svc.sel4.cloudtype.app:31540/naebom
     username: naebom-user
     password: MySecurePassword123!
 
