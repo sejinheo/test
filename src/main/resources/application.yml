@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:mariadb://svc.sel4.cloudtype.app:31540/naebom?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
-    username: root
-    password: naebom
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
 
 
   servlet:
