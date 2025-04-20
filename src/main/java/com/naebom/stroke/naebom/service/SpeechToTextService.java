@@ -70,7 +70,13 @@ public class SpeechToTextService {
         logger.info("M4A 원본 파일 저장 완료: {}, 크기: {} bytes", m4aFile.getAbsolutePath(), m4aFile.length());
 
         // FFmpeg 실행 (경로를 직접 지정하는 것이 좋음)
-        String ffmpegPath = "/opt/homebrew/bin/ffmpeg";
+        //String ffmpegPath = "/opt/homebrew/bin/ffmpeg";
+        String ffmpegPath = System.getenv("FFMPEG_PATH");
+        if (ffmpegPath == null || ffmpegPath.isEmpty()) {
+            ffmpegPath = "ffmpeg"; // 기본 경로로 시도
+        }
+
+
         ProcessBuilder processBuilder = new ProcessBuilder(
                 ffmpegPath, "-y", "-i", m4aFile.getAbsolutePath(),
                 "-ar", "16000", "-ac", "1", "-sample_fmt", "s16",
