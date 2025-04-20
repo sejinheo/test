@@ -18,12 +18,16 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MariaDBDialect
 
-  redis:
-    data:
-     host: sharp-vervet-11892.upstash.io
-     port: 6379
-     password: ${REDIS_PASSWORD}
-     ssl: true
+  data:
+    redis:
+      host: sharp-vervet-11892.upstash.io
+      port: 6379
+      password: ${REDIS_PASSWORD}
+      timeout: 5000
+      client-type: lettuce  # lettuce 또는 jedis
+
+      lettuce:
+        ssl: true
 
   mail:
     host: smtp.gmail.com
