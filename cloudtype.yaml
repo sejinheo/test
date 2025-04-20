@@ -1,0 +1,30 @@
+name: naebom
+app: java@17
+resources:
+  spot: true
+  memory: 0.5
+build:
+  docker:
+    dockerfile: Dockerfile
+options:
+  ports: "8080"
+  env:
+    - name: REDIS_PASSWORD
+      value: AS50AAIjcDE...
+    - name: MAIL_PASSWORD
+      value: icvddmxotcp...
+    - name: GOOGLE_APPLICATION_CREDENTIALS_JSON
+      value: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_JSON }}
+    - name: DB_URL
+      value: jdbc:mariadb://svc.sel4.cloudtype.app:31540/naebom?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    - name: DB_USERNAME
+      value: root
+    - name: DB_PASSWORD
+      value: naebom
+    - name: FFMPEG_PATH
+      value: ffmpeg
+  healthz: /actuator/health
+context:
+  git:
+    url: https://github.com/sejinheo/test.git
+    branch: master
