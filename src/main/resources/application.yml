@@ -22,7 +22,8 @@ spring:
     redis:
       url: rediss://default:${REDIS_PASSWORD}@sharp-vervet-11892.upstash.io:6379
       client-type: lettuce
-
+      reactive:
+        enabled: false
 
   mail:
     host: smtp.gmail.com
@@ -50,6 +51,8 @@ management:
   endpoint:
     health:
       show-details: always
+      redis:
+        enabled: false
 
 logging:
   level:
