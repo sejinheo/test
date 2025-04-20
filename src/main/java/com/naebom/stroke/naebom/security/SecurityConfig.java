@@ -30,7 +30,8 @@ public class SecurityConfig {
                                 "/api/test-records/**",
                                 "/api/face/**",
                                 "/setting/**",
-                                "/api/ai/**").permitAll() //인증 없이 접근 가능
+                                "/api/ai/**",
+                                "/actuator/health").permitAll() //인증 없이 접근 가능
                         .anyRequest().authenticated() // 나머지 요청은 인증 필요
                 )
                 .cors(cors -> cors.configurationSource(request -> {
