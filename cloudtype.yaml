@@ -21,7 +21,7 @@ options:
     - name: DB_PASSWORD
       value: naebom
     - name: FFMPEG_PATH
-      value: ffmpeg
+      value: /usr/bin/ffmpeg
   healthz: /actuator/health
 context:
   git:
