@@ -22,12 +22,15 @@ spring:
     redis:
       host: sharp-vervet-11892.upstash.io
       port: 6379
-      password: ${REDIS_PASSWORD}
-      timeout: 5000
-      client-type: lettuce  # lettuce 또는 jedis
-
+      password: ${REDIS_PASSWORD} # 환경변수 또는 .env 파일에서 설정
+      client-type: lettuce
       lettuce:
-        ssl: true
+        shutdown-timeout: 100ms
+        pool:
+          max-active: 8
+          max-idle: 8
+          min-idle: 0
+
 
   mail:
     host: smtp.gmail.com
