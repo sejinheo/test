@@ -1,5 +1,4 @@
 name: naebom
-app: java@17
 resources:
   spot: true
   memory: 0.5
