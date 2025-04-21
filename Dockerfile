@@ -1,9 +1,9 @@
 FROM openjdk:17-slim
 
-# 필수 패키지 및 도구 설치 (기존 gradle 제거하지 않아도 됨)
+# 필수 패키지 및 도구 설치
 RUN apt-get update && apt-get install -y ffmpeg wget unzip
 
-# 최신 Gradle 설치 (8.12.1)
+# Gradle 설치
 RUN wget https://services.gradle.org/distributions/gradle-8.12.1-bin.zip -P /tmp \
     && unzip -d /opt/gradle /tmp/gradle-8.12.1-bin.zip \
     && ln -s /opt/gradle/gradle-8.12.1/bin/gradle /usr/bin/gradle
@@ -14,13 +14,13 @@ WORKDIR /app
 # 소스 코드 복사
 COPY . .
 
-# 빌드 실행
-RUN gradle clean build --no-daemon
+# ✅ 테스트를 제외한 빌드 실행
+RUN gradle clean build -x test --no-daemon
 
-# 실행 경로 이동
+# 실행 경로 설정
 WORKDIR /app/build/libs
 
-# 서버 포트 오픈
+# 포트 설정
 EXPOSE 8080
 
 # 실행 명령

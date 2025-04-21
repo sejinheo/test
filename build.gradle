@@ -47,11 +47,14 @@ dependencies {
 	implementation 'com.google.cloud:google-cloud-speech'
 	implementation 'com.google.auth:google-auth-library-oauth2-http'  // GoogleCredentials 관련 라이브러리 추가
 
+	implementation 'com.google.protobuf:protobuf-java:3.24.0'
 	//implementation 'com.mysql:mysql-connector-j:8.0.33'
+	implementation 'mysql:mysql-connector-java:8.0.33'
 	// JWT
 	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
 	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
 	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
+
 
 	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
