@@ -1,7 +1,11 @@
 HELP.md
 .gradle
 
-/build/
+
+build/
+!build/libs/
+!build/libs/naebom-0.0.1-SNAPSHOT.jar
+
 
 ### STS ###
 .apt_generated
