@@ -1,4 +1,4 @@
-FROM openjdk:17
+FROM openjdk:17-slim
 
 # 필수 패키지 설치
 RUN apt-get update && apt-get install -y ffmpeg gradle
