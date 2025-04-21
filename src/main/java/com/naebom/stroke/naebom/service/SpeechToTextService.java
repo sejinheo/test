@@ -11,7 +11,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Base64;
 import java.util.concurrent.TimeUnit;
@@ -117,8 +119,18 @@ public class SpeechToTextService {
 
     /** Google Cloud Speech API를 사용하여 STT 변환 */
     private String transcribeSpeech(File audioFile) throws Exception {
+        String json = System.getenv("GOOGLE_APPLICATION_CREDENTIALS_JSON");
+
+        if (json == null) {
+            throw new IllegalStateException("환경 변수 GOOGLE_APPLICATION_CREDENTIALS_JSON 이 설정되지 않았습니다.");
+        }
+
+// 보안상 안전하게 임시 파일로 저장
+        Path tempFile = Files.createTempFile("gcp-creds", ".json");
+        Files.write(tempFile, json.getBytes(StandardCharsets.UTF_8));
+
         GoogleCredentials credentials = GoogleCredentials
-                .fromStream(new FileInputStream(System.getenv("GOOGLE_APPLICATION_CREDENTIALS_JSON")))
+                .fromStream(new FileInputStream(tempFile.toFile()))
                 .createScoped("https://www.googleapis.com/auth/cloud-platform");
 
         SpeechSettings settings = SpeechSettings.newBuilder()
