@@ -118,7 +118,7 @@ public class SpeechToTextService {
     /** Google Cloud Speech API를 사용하여 STT 변환 */
     private String transcribeSpeech(File audioFile) throws Exception {
         GoogleCredentials credentials = GoogleCredentials
-                .fromStream(new FileInputStream(System.getenv("GOOGLE_APPLICATION_CREDENTIALS")))
+                .fromStream(new FileInputStream(System.getenv("GOOGLE_APPLICATION_CREDENTIALS_JSON")))
                 .createScoped("https://www.googleapis.com/auth/cloud-platform");
 
         SpeechSettings settings = SpeechSettings.newBuilder()
