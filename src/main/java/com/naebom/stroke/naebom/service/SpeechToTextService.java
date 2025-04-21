@@ -1,5 +1,7 @@
 package com.naebom.stroke.naebom.service;
 
+import com.google.api.gax.core.FixedCredentialsProvider;
+import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.speech.v1.*;
 import com.google.protobuf.ByteString;
 import com.naebom.stroke.naebom.utils.LevenshteinUtil;
@@ -115,7 +117,14 @@ public class SpeechToTextService {
 
     /** Google Cloud Speech API를 사용하여 STT 변환 */
     private String transcribeSpeech(File audioFile) throws Exception {
-        try (SpeechClient speechClient = SpeechClient.create()) {
+        GoogleCredentials credentials = GoogleCredentials
+                .fromStream(new FileInputStream(System.getenv("GOOGLE_APPLICATION_CREDENTIALS")))
+                .createScoped("https://www.googleapis.com/auth/cloud-platform");
+
+        SpeechSettings settings = SpeechSettings.newBuilder()
+                .setCredentialsProvider(FixedCredentialsProvider.create(credentials))
+                .build();
+        try (SpeechClient speechClient = SpeechClient.create(settings)) {
             byte[] audioBytes = Files.readAllBytes(audioFile.toPath());
             ByteString audioData = ByteString.copyFrom(audioBytes);
 
