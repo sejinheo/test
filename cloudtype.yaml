@@ -12,9 +12,9 @@ options:
   ports: "8080"
   env:
     - name: REDIS_PASSWORD
-      value: AS50AAIjcDE...
+      value: AS50AAIjcDE0Zjk2ZTY0YWE1MDY0MWQwYjIyMTk3OTEyYjAyNGY0ZXAxMA
     - name: MAIL_PASSWORD
-      value: icvddmxotcp...
+      value: icvddmxotcpzdnvt
     - name: GOOGLE_APPLICATION_CREDENTIALS_JSON
       value: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_JSON }}
     - name: DB_URL
@@ -24,7 +24,7 @@ options:
     - name: DB_PASSWORD
       value: naebom
     - name: FFMPEG_PATH
-      value: ffmpeg
+      value: /usr/bin/ffmpeg
   healthz: /actuator/health
 
 context:
